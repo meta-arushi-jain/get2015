@@ -1,3 +1,5 @@
+/*----checking for test cases
+*/
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -26,9 +28,12 @@ public class convertBinaryToOctal {
 	}
 
 	@Test
-	public void test() {
+	public void test() 
+	{
 		int octal=Assignment1.convertBinaryToOctal(110101);
-		assertEquals("correct",65,octal);}
+		assertEquals("correct",65,octal);
+		
+	}
 	
 	
 
