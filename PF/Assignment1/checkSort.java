@@ -1,3 +1,5 @@
+/*----checking for test cases
+*/
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -26,7 +28,8 @@ public class checkSort {
 	}
 
 	@Test
-	public void test() {
+	public void test() 
+	{
 		int array1[]={1,2,3,4,5};
 		int b=Assignment5.checkSort(array1);
 		
@@ -34,7 +37,8 @@ public class checkSort {
 		
 	}
 	@Test
-	public void test1() {
+	public void test1() 
+	{
 		int array2[]={5,4,3,2,1};
 		int b=Assignment5.checkSort(array2);
 		
@@ -42,7 +46,8 @@ public class checkSort {
 		
 	}
 	@Test
-	public void test2() {
+	public void test2() 
+	{
 		int array1[]={1,2,6,4,5};
 		int b=Assignment5.checkSort(array1);
 		
