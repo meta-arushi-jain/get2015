@@ -1,3 +1,5 @@
+/*----checking for test cases
+*/
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -26,7 +28,8 @@ public class removeDuplicate {
 	}
 
 	@Test
-	public void test() {
+	public void test() 
+	{
 
 			int array1[]={2,5,4,6,3,8,5,9,3,3,6,3,9,0};
 			int[] array2=Assignment2.removeDuplicate(array1);
