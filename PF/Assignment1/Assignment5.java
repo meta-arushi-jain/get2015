@@ -15,16 +15,16 @@ public class Assignment5 {
 		noOfElements=sc.nextInt();
 		int insertArray[]=new int[noOfElements];
 		System.out.println("enter nos");
-for(i=0;i<noOfElements;i++)
-{
-insertArray[i]=sc.nextInt();
-	}
-result=checkSort(insertArray);
+                                 for(i=0;i<noOfElements;i++)
+                                {
+                                   insertArray[i]=sc.nextInt();
+                                }
+                result=checkSort(insertArray);
 
-System.out.println(""+result);
+                System.out.println(""+result);
 	
 
-}
+         }
 	public static int checkSort(int[] arr){
 		int len=arr.length,count=0,count1=0;
 		for(int i=0;i<len-1;i++)
@@ -34,12 +34,15 @@ System.out.println(""+result);
 				count=count+1;
 			}
 			else
-				break;}
+				break;
+			
+		}
 		for(int i=0;i<len-1;i++)
 		
-		{if(arr[i]>arr[i+1])
+		{
+			if(arr[i]>arr[i+1])
 			{
-				count1=count1+1;
+			    count1=count1+1;
 			}
 			else
 				break;
