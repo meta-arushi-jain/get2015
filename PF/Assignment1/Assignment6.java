@@ -1,3 +1,13 @@
+import java.util.Scanner;
+/*program for adding sorted array
+*/
+
+
+/*process----comparing from initials of both array and storing the value which is small and updating the index 
+             of that array which has smaller value.
+             when one of the array is fully added then adding all the values of the remaining array in sequence
+             as they are in sorted order
+*/
 
 public class Assignment6 {
 	int[] join(int a[], int asize, int b[], int bsize, int c[])
@@ -45,10 +55,10 @@ public class Assignment6 {
 		int a[]={1,3,5,6,8};
 		int b[]={2,4,7,8,9,11,12};
 		int c[]=new int[a.length+b.length];
-		for(int i=0;i<assign.join(a,a.length,b,b.length,c).length;i++)
-		{
+		   for(int i=0;i<assign.join(a,a.length,b,b.length,c).length;i++)
+		    {
 			System.out.print(assign.join(a, a.length,b,b.length,c)[i]+" ");
-		}
+		     }
 	}
 
 }
