@@ -1,3 +1,5 @@
+/*----checking for test cases
+*/
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -26,7 +28,8 @@ public class longestSequence {
 	}
 
 	@Test
-	public void test() {
+	public void test() 
+	{
 		int array1[]={1,2,3,1,2};
 		int[] array2=Assignment2.removeDuplicate(array1);
 		int array3[]={1,2,3};
