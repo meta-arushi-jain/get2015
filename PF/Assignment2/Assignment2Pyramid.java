@@ -1,3 +1,7 @@
+/*----checking for test cases
+*/
+
+
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -26,26 +30,32 @@ public class Assignment2Pyramid {
 	}
 
 	@Test
-	public void test() {
+	public void test() 
+	{
 		String space=Assignment2.spaces(3,5);
 		assertEquals("correct","  ",space);
-		}
+         }
 	
 	
-@Test
-public void test1() {
+        @Test
+        public void test1() 
+        {
 	
-	String num=Assignment2.numbers(1,5);
-	assertEquals("correct","1",num);
+	     String num=Assignment2.numbers(1,5);
+	     assertEquals("correct","1",num);
 
-}
-@Test
-public void test2()
-{String expected[]={"12345"," 1234","  123","   12","    1"};
-String s1[]=Assignment2.printWholePyramid(5);
-for(int i=0;i<5;i++)
-{assertEquals("correct",expected[i],s1[i]);
-	}
-}
+         }
+         
+         
+        @Test
+        public void test2()
+        {
+        	String expected[]={"12345"," 1234","  123","   12","    1"};
+                String s1[]=Assignment2.printWholePyramid(5);
+                       for(int i=0;i<5;i++)
+                         {
+                         	assertEquals("correct",expected[i],s1[i]);
+	                  }
+         }
 }
 
