@@ -1,9 +1,11 @@
 import java.util.Scanner;
-
+/*program for FCFS ---calculating the waiting time andstartig time and finish time
+*/
 public class Assignment4 {
 
 int alength,jlength;
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		int Arrival_time[],Job_size[];
 		System.out.println("Enter size of the array arrival time");
 		Scanner sc=new Scanner(System.in);
@@ -13,21 +15,21 @@ int alength,jlength;
 		int jlength=sc.nextInt();
 		Arrival_time=new int[alength];
 		System.out.println("Enter Arrival time");
-		for(int i=0;i<alength;i++)
-		{
+		   for(int i=0;i<alength;i++)
+		  {
 			Arrival_time[i]=sc.nextInt();
-		}
+		   }
 		Job_size=new int[jlength];
 		System.out.println("Enter job sizes");
-		for(int i=0;i<alength;i++)
-		{
+		  for(int i=0;i<alength;i++)
+		   {
 			Job_size[i]=sc.nextInt();
-		}
+		   }
 		 Assignment4 a1=new Assignment4();
 		 System.out.println(" job   job arrival   Time Job Waiting   Time Job Start   Time Job Finish Time");
 		 int array3[][]=new int[jlength][];
 		 array3=a1.FCFS(Arrival_time,Job_size,jlength);
-		 for(int i=0;i<jlength;i++)
+		        for(int i=0;i<jlength;i++)
 			 {
 			 for(int j=0;j<5;j++)
 				 {
