@@ -1,3 +1,5 @@
+/*----checking for test cases
+*/
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -26,7 +28,8 @@ public class JoinMerge {
 	}
 
 	@Test
-	public void test() {
+	public void test() 
+	{
 		int array1[]={1,2,2,2,3,3};
 		int array2[]={1,4,7,9};
 		int array3[]=new int[array1.length+array2.length];
