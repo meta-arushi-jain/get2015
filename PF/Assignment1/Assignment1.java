@@ -16,6 +16,8 @@ octalNumber=convertBinaryToOctal(binaryNumber);
 System.out.println("octalno.is"+octalNumber);
 
 	}
+	/*function woking-----taking pair of 3 values from last and then converting into octal parameters short-cut method  
+	*/
 	static int convertBinaryToOctal(int n)
 	{
 		int count,temp,temp1,temp2,temp3,result=0,output=0;
