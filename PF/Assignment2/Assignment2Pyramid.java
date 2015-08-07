@@ -50,12 +50,13 @@ public class Assignment2Pyramid {
         @Test
         public void test2()
         {
-        	String expected[]={"12345"," 1234","  123","   12","    1"};
-                String s1[]=Assignment2.printWholePyramid(5);
-                       for(int i=0;i<5;i++)
-                         {
-                         	assertEquals("correct",expected[i],s1[i]);
-	                  }
+            String expected[]={"12345"," 1234","  123","   12","    1"};
+            String s1[]=Assignment2.printWholePyramid(5);
+                    
+                  for(int i=0;i<5;i++)
+                     {
+                       assertEquals("correct",expected[i],s1[i]);
+	             }
          }
 }
 
