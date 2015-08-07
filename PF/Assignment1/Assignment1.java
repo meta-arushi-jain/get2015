@@ -3,7 +3,7 @@ import java.util.*;
 public class Assignment1 {
 
 	/**
-	 * @param args
+	 * @Program to convert binary to octal
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
