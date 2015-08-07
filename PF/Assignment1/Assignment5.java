@@ -1,9 +1,12 @@
 import java.util.Scanner;
+/*program for checking the type of sorting----accending,decending,or not sorted 
+*/
 
+public class Assignment5
+{
 
-public class Assignment5 {
-
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		// TODO Auto-generated method stub
 		int noOfElements,i;
 		
@@ -25,6 +28,9 @@ public class Assignment5 {
 	
 
          }
+         /*Function process---checking from starting that where it is in accending or decending,if till end they are 
+         in same order then returning there expected value otherwise reporting as unsorted array.  
+         */
 	public static int checkSort(int[] arr){
 		int len=arr.length,count=0,count1=0;
 		for(int i=0;i<len-1;i++)
