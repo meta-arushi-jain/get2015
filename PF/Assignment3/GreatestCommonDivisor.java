@@ -30,7 +30,7 @@ public class GreatestCommonDivisor {
 
 		else {
 			System.out
-					.println("you have not submitted wrong value.Please put positive value");
+					.println("you have submitted wrong value.Please put positive value");
 		}
 
 		sc.close();
