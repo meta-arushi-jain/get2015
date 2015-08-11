@@ -1,15 +1,12 @@
 import java.util.*;
 
 /**
- * Assignment1.3
- * -----Program to find the largest digit in the given no.
+ * Assignment1.3 -----Program to find the largest digit in the given no.
  * 
  * @author Arushi
  *
  */
 public class LargestDigit {
-
-	int tempValue = 0;
 
 	public static void main(String[] args) {
 
@@ -44,18 +41,19 @@ public class LargestDigit {
 	public int largestDigit(int x) {
 
 		if (x == 0) {
-			return tempValue;
+			return 0;
 		}
 
-		else {
-			int remainder = x % 10;
+		else
+			return (maxvalue(x % 10, largestDigit(x / 10)));
 
-			if (remainder > tempValue) {
+	}
 
-				tempValue = remainder;
-
-			}
-			return largestDigit(x / 10);
+	public static int maxvalue(int x, int y) {
+		if (x > y) {
+			return x;
+		} else {
+			return y;
 		}
 	}
 
