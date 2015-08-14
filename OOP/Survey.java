@@ -101,6 +101,8 @@ public class Survey {
 						System.out.println(answer);
 					}
 					break;
+					default:
+						System.out.println("Enter right values");
 				}
 				System.out.println("Do you want to continue(y/n)");// continuing
 																	// the
