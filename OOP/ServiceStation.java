@@ -1,3 +1,4 @@
+
 package ServiceCar;
 
 import java.io.BufferedWriter;
@@ -93,9 +94,30 @@ public class ServiceStation {
 						Person person = new Person(name, carType, 0);
 						// storing data in person list
 						serviceStation.personList.add(person);
+						int flag=0;
+						Iterator<Cars> itr4 = serviceStation.carsList.iterator();
+						while (itr4.hasNext()) {
+							
+					Cars objectCheck = itr4.next();
+					if(carType.equalsIgnoreCase(objectCheck.type))
+					{flag=1;
+				
+					}}
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						if(flag==0){
 						Cars cars = new Cars(carType, Double.parseDouble(price));
 						// storing data in car list
+						
 						serviceStation.carsList.add(cars);
+						}
 						name = "";
 						carType = "";
 						price = "";
@@ -104,6 +126,7 @@ public class ServiceStation {
 
 				}
 			}
+			
 			fr.close();
 			carType = "";
 			name = "";
@@ -154,8 +177,7 @@ public class ServiceStation {
 					count++;
 					if (count == 2) {
 						count = 0;
-						System.out.println("Done" + carType);
-						System.out.println("Done" + name);
+						
 						ServicingCars servicingCars1 = new ServicingCars(
 								carType, Integer.parseInt(name));
 						serviceStation.servicingList.add(servicingCars1); // adding
@@ -171,10 +193,10 @@ public class ServiceStation {
 			}
 
 			fr1.close();
-			// getting Iterator from arraylist person to traverse mechanic
-			Iterator<Person> itr = serviceStation.personList.iterator();
+			// getting Iterator from arraylist servicing list to traverse car to be served
+			Iterator<ServicingCars> itr = serviceStation.servicingList.iterator();
 			while (itr.hasNext()) {
-				Person object1 = itr.next();
+				ServicingCars object1 = itr.next();
 				// getting Iterator from arraylist cars to traverse cars for
 				// matching
 
@@ -183,22 +205,23 @@ public class ServiceStation {
 					Cars object2 = itr1.next();
 					if (object2.getType().equals(object1.carType)) {
 
-						Iterator<ServicingCars> itr3 = serviceStation.servicingList
+						Iterator<Person> itr3 = serviceStation.personList
 								.iterator();
-						// getting Iterator from arraylist servicing cars to
-						// traverse cars which are served today
+						// getting Iterator from arraylist mechanic to
+						// traverse cars which can be served today
 						while (itr3.hasNext()) {
-							ServicingCars object3 = itr3.next();
+							Person object3 = itr3.next();
 							if (object3.getCarType().equals(object2.getType())
-									&& (object1.getFlag() == 0)) {
-								object1.setFlag(1);
+									&& (object3.getFlag() == 0)) {
+								object3.setFlag(1);
 								Services services = new Services(
-										object1.getName(),
-										object1.getCarType(),
+										object3.getName(),
+										object3.getCarType(),
 										object2.getServiceRate(),
-										object3.getCarNumber());
+										object1.getCarNumber());
 								serviceStation.servicesList.add(services);
 								// storing data in list
+								break;
 							}
 						}
 					}
