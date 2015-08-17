@@ -31,7 +31,7 @@ public class Survey {
 			double totalA=0.0,totalB=0.0,totalC=0.0,totalD=0.0;
 			char choice;
 			String answer="";
-			
+			boolean flag = false;
 			do
 			{
 				
@@ -48,7 +48,7 @@ public class Survey {
 				{
 					/* if choice is 1 */
 					case 1:
-						count=count+1;
+						
 						
 						 /* first question */
 						System.out.println(surveyQuestionObj.age(false));
@@ -59,7 +59,7 @@ public class Survey {
 							break;
 						}
 						answerObj.age(age);
-						
+						count=count+1;
 						 /* Second question */
 						System.out.println(surveyQuestionObj.nationality(false));
 						answer = bufferedReaderObj.readLine();
@@ -88,7 +88,9 @@ public class Survey {
 						/* Sixth question */
 						System.out.println(surveyQuestionObj.feedback(false));		
 						answer= bufferedReaderObj.readLine();;						
-						answerObj.feedbackSet(answer);						
+						answerObj.feedbackSet(answer);	
+						flag = false;
+						break;
 					
 						/* if choice is 2 */
 					case 2:
@@ -97,28 +99,38 @@ public class Survey {
 							System.out.println("Please take the survey at least once to view results");
 							break;
 						}
-						for(i=1;i<=count;i++)
+						if(flag == false)
 						{
-							result=answerObj.getRating(i);	
-							if(result==1)
-								totalA+=1.0;
-							
-							if(result==2)
-								totalB+=1.0;
-							
-							if(result==3)
-								totalC+=1.0;
-							
-							if(result==4)
-								totalD+=1.0;
+							totalA = 0.0;
+							totalB = 0.0;
+							totalC = 0.0;
+							totalD = 0.0;
+							for(i=1;i<=count;i++)
+							{
+								result=answerObj.getRating(i);	
+								if(result==1)
+									totalA+=1.0;
+								
+								if(result==2)
+									totalB+=1.0;
+								
+								if(result==3)
+									totalC+=1.0;
+								
+								if(result==4)
+									totalD+=1.0;
+							}
 						}
-						/* total percentage of answers */
+
+							/* total percentage of answers */
 						System.out.println("Total percentage of Excellent: "+ totalA/count*100);
 						System.out.println("Total percentage of Good: "+ totalB/count*100);
 						System.out.println("Total percentage of Fair: "+ totalC/count*100);
 						System.out.println("Total percentage of Bad: "+ totalD/count*100);
+						flag = true;
+
 						break;
-						
+
 						/* if choice is 3 */
 					case 3:
 						
@@ -158,6 +170,7 @@ public class Survey {
 							/* Sixth question */
 							System.out.println(surveyQuestionObj.feedback(true));
 							answer = answerObj.feedbackGet(i);
+							
 							System.out.println(answer);
 						}
 						break;
@@ -191,3 +204,4 @@ public class Survey {
 	}
 
 }
+
