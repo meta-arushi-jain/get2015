@@ -1,129 +1,193 @@
-//To conduct a survey using open end methodology
+
 import java.util.Scanner;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+/**
+ * 
+ */
 
 /**
- * @author Arushi 
- * Main class for surveying
+ * @author Arushi
  *
  */
 public class Survey {
-	public static void main(String args[]) {
-		try {
-			Scanner scan = new Scanner(System.in);
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					System.in));
-			SurveyQuestion object1 = new SurveyQuestion();
-			Answer object2 = new Answer();
-			int ch, count = 0, i, result;
-			double totalA = 0.0, totalB = 0.0, totalC = 0.0, totalD = 0.0;
+
+	static int AreaOfImprovements = 3;
+	public static void main(String args[])
+	{	
+		/* initialization */
+		Scanner scan = null;
+		BufferedReader bufferedReaderObj = null;
+		try
+		{
+			/* Initialization */
+			scan=new Scanner(System.in);
+			bufferedReaderObj = new BufferedReader(new InputStreamReader(System.in));
+			SurveyQuestion surveyQuestionObj= new SurveyQuestion();
+			Answer answerObj= new Answer();
+			int ch=1,count=0,i,rating;
+			int result;
+			int age;
+			double totalA=0.0,totalB=0.0,totalC=0.0,totalD=0.0;
 			char choice;
-			String[] multiChoice = new String[10];
-			String answer = "";
-			String a = "";
-			do {
+			String answer="";
+			
+			do
+			{
+				
+				/* choice menu will be printed */ 
+				
 				System.out.println("Menu");
 				System.out.println("1.Take survey");
 				System.out.println("2.View Statistics");
 				System.out.println("3.View people and answers");
 				System.out.println("Enter your choice");
-				ch = scan.nextInt();
-
-				switch (ch) {
-				case 1:
-					count = count + 1; // To ask survey questions from user
-					System.out.println(object1.singleSelect());
-					System.out.println("Answer must be single valued");
-					result = scan.nextInt();
-					if (result < 0 || result > 5) {
-						while (result < 0 || result > 5) {
-							System.out.println("Add correct value(1-4)");
-							result = scan.nextInt();
-							object2.singleAnsSet(result, count);
+				ch=scan.nextInt();						// choice of user is taken as input
+				 /* switch case to perform action according to choice */
+				switch(ch)
+				{
+					/* if choice is 1 */
+					case 1:
+						count=count+1;
+						
+						 /* first question */
+						System.out.println(surveyQuestionObj.age(false));
+						age = scan.nextInt();
+						if(age<18)
+						{
+							System.out.println("Survey is Available only for 18+ people");
+							break;
 						}
-					} else {
-						object2.singleAnsSet(result, count);
-					}
-
-					System.out.println(object1.multipleSelect());
-					int j = 0;
-					System.out.println("Answer can be multi valued");
-					System.out.println("Enter # to stop");
-					while ((!answer.equals("#")) && (j < 4)) {
-						answer = br.readLine();
-						if (!answer.equals("1") && !answer.equals("2")
-								&& !answer.equals("3") && !answer.equals("#")) {
-							while (!answer.equals("1") && !answer.equals("2")
-									&& !answer.equals("3")
-									&& !answer.equals("#")) {
-								System.out
-										.println("Add correct value(1-3 or #)");
-								answer = br.readLine();
-								object2.multipleAnsSet(answer, count);
-								j++;
-							}
-						} else {
-
-							a = a + " " + answer;
-							object2.multipleAnsSet(answer, count);
-							j++;
+						answerObj.age(age);
+						
+						 /* Second question */
+						System.out.println(surveyQuestionObj.nationality(false));
+						answer = bufferedReaderObj.readLine();
+						answerObj.nationality(answer);
+						
+						 /* Third question */
+						System.out.println(surveyQuestionObj.gender(false));
+						answer = bufferedReaderObj.readLine();
+						answerObj.gender(answer);
+						
+						 /* Fourth question */
+						System.out.println(surveyQuestionObj.ratingHeritages(false));	
+						rating=scan.nextInt();									
+						if(rating!=1 && rating!=2 && rating!=3 && rating!=4)
+						{
+							System.out.println("Please enter from available options");
+							rating=scan.nextInt();
 						}
-					}
-					multiChoice[count] = a;
-					System.out.println(object1.text());
-					answer = br.readLine();
-					;
-					object2.textSet(answer, count);
-					break;
-				case 2:
-					for (i = 1; i <= count; i++) // To display single select
-													// answer statistics
-					{
-						result = object2.singleAnsGet(i);
-						if (result == 1) {
-							totalA += 1.0; // how many users selected option 1
-						} else if (result == 2) {
-							totalB += 1.0;
-						} else if (result == 3) {
-							totalC += 1.0;
-						} else if (result == 4) {
-							totalD += 1.0;
+						answerObj.rating(rating); 		
+						
+						/* Fifth question */
+						System.out.println(surveyQuestionObj.favoriteHeritages(false));	
+						answer = bufferedReaderObj.readLine();
+						answerObj.favoriteHeritages(answer); 	
+						
+						/* Sixth question */
+						System.out.println(surveyQuestionObj.feedback(false));		
+						answer= bufferedReaderObj.readLine();;						
+						answerObj.feedbackSet(answer);						
+					
+						/* if choice is 2 */
+					case 2:
+						if(count == 0)
+						{
+							System.out.println("Please take the survey at least once to view results");
+							break;
 						}
-					}
-					System.out.println("Total percentage of 1: " + totalA
-							/ count * 100);
-					System.out.println("Total percentage of 2: " + totalB
-							/ count * 100);
-					System.out.println("Total percentage of 3: " + totalC
-							/ count * 100);
-					System.out.println("Total percentage of 4: " + totalD
-							/ count * 100);
-					break;
-				case 3:
-					for (i = 1; i <= count; i++) // To display all participant
-													// information
-					{
-						System.out.println("Participant " + i);
-						System.out.println(object1.singleSelect());
-						result = object2.singleAnsGet(i);
-						System.out.println(result);
-						System.out.println(object1.multipleSelect());
-						// answer=object2.multipleAnsGet(i);
-						System.out.println(multiChoice[count]);
-						System.out.println(object1.text());
-						answer = object2.textAnsGet(i);
-						System.out.println(answer);
-					}
-					break;
+						for(i=1;i<=count;i++)
+						{
+							result=answerObj.getRating(i);	
+							if(result==1)
+								totalA+=1.0;
+							
+							if(result==2)
+								totalB+=1.0;
+							
+							if(result==3)
+								totalC+=1.0;
+							
+							if(result==4)
+								totalD+=1.0;
+						}
+						/* total percentage of answers */
+						System.out.println("Total percentage of Excellent: "+ totalA/count*100);
+						System.out.println("Total percentage of Good: "+ totalB/count*100);
+						System.out.println("Total percentage of Fair: "+ totalC/count*100);
+						System.out.println("Total percentage of Bad: "+ totalD/count*100);
+						break;
+						
+						/* if choice is 3 */
+					case 3:
+						
+						if(count == 0)
+						{
+							System.out.println("Please take the survey at least once to view results");
+							break;
+						}
+						for(i=1;i<=count;i++)
+						{
+							System.out.println("\nTourist " +i+"\n");
+							 /* first question */
+							System.out.print(surveyQuestionObj.age(true));
+							age=answerObj.getAge(i);	
+							System.out.println(age+"\n");
+							
+							/* Second question */
+							System.out.print(surveyQuestionObj.nationality(true));
+							answer=answerObj.getNationality(i);	
+							System.out.println(answer+"\n");
+							
+							/* third question */
+							System.out.print(surveyQuestionObj.gender(true));
+							answer = answerObj.getGender(i);
+							System.out.println(answer+"\n");
+							
+							/* Fourth question */
+							System.out.print(surveyQuestionObj.ratingHeritages(true));
+							rating = answerObj.getRating(i);
+							System.out.println(rating+"\n");
+							
+							/* Fifth question */
+							System.out.print(surveyQuestionObj.favoriteHeritages(true));
+							answer = answerObj.getfavoriteHeritages(i);
+							System.out.println(answer+"\n");
+							
+							/* Sixth question */
+							System.out.println(surveyQuestionObj.feedback(true));
+							answer = answerObj.feedbackGet(i);
+							System.out.println(answer);
+						}
+						break;
+					default:
+						System.out.println("Enter number in tha range 1 to 3\n");
 				}
-				System.out.println("Do you want to continue(y/n)");
-				choice = scan.next().charAt(0);
-			} while (choice == 'y'); // While user chooses to continue
-			scan.close();
-		} catch (IOException e) {
-			System.out.println("Exception handled");
+				System.out.println("\nDo you want to continue(y/n)");
+				choice=scan.next().charAt(0);
+				
+			}while(choice=='y');
 		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			scan.close();
+			return;
+		}
+		finally
+		{
+			try
+			{
+				scan.close();
+				bufferedReaderObj.close();
+			}
+			catch(Exception e)
+			{
+				System.out.println(e.getMessage());
+			}
+		}
+		
 	}
+
 }
