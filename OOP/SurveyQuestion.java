@@ -1,31 +1,65 @@
+
 /**
- * @author Arushi Implementing all Questions
+ * @author Arushi
  *
  */
-public class SurveyQuestion implements Question {
-	/*
-	 * @see Question#singleSelect() Returning Questions which have only one
-	 * value to select
-	 */
-	public String singleSelect() {
-		String question1 = "Overall rating of student: Single select(1/2/3/4)";
-		return question1;
+public class SurveyQuestion
+{
+	/* method to return Age question */
+	public String age(boolean flag)
+	{
+		if(flag == false)
+			return "Enter your age: ";
+		else
+			return "Age: ";
 	}
-
-	/*
-	 * @see Question#multipleSelect() Returning Questions which have more than
-	 * one value to select
-	 */
-	public String multipleSelect() {
-		String question1 = "Area of improvement: multi select(Service quality,communication,delivery process)";
-		return question1;
+	
+	/* method to return nationality question */
+	public String nationality(boolean flag)
+	{
+		if(flag == false)
+			return "Enter your Nationality: ";
+		else
+			return "Nationality: ";
 	}
-
-	/*
-	 * @see Question#text() To store feedback
-	 */
-	public String text() {
-		String question1 = "Feedback";
-		return question1;
+	
+	/* method to return gender question */
+	public String gender(boolean flag)
+	{
+		if(flag == false)
+		{
+			return "Enter Gender: ";
+		}
+		else
+			return "Gender: ";
+	}
+	
+	/* method to return rating question */
+	public String ratingHeritages(boolean flag)
+	{
+		if(flag == false)
+			return "Overall rating of trip:(Only single selection is allowed)\n 1. Excellent\n 2. Good \n 3. Fair \n 4. bad\n";
+		else
+			return "Overall rating of trip: ";
+	}
+	
+	 /* method to return favorite haritage question */
+	
+	public String favoriteHeritages(boolean flag)
+	{
+		if(flag == false)
+			return "Enter the Haritages which you like the most (use comma seperated list,You can enter more than one value)";
+		else
+			return "Favourite Haritages:";
+	}
+	 
+	 /* method to return feedback question */
+	public String feedback(boolean flag)
+	{
+		if(flag == false)
+			return "Submit Feedback\n";
+		else
+			return "Feedback:";
 	}
 }
+
