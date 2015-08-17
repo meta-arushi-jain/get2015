@@ -1,69 +1,101 @@
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
- * @author ArushiStoring Answers of every individual and returning it
- *Storing Answers of every individual and returning it
+ * @author Arushi
+ *
  */
-public class Answer {
-	int single[] = new int[10];
-	String multiple[] = new String[10];
-	String text[] = new String[10];
-
-	/**
-	 * @param number
-	 *            ->answer of individual
-	 * @param count
-	 *            ->individual number
-	 */
-	void singleAnsSet(int number, int count) {
-		single[count] = number;
+public class Answer 
+{
+	List<Integer> ageList = new ArrayList<Integer>();
+	List<Integer> ratingList = new ArrayList<Integer>();
+	List<String> genderList = new ArrayList<String>();
+	List<String> nationalityList = new ArrayList<String>();
+	List<String> favoriteHeritagesList= new ArrayList<String>();
+	List<String> feedbackList = new ArrayList<String>();
+	
+	/* this method stores age of a tourist */
+	void age(int number)
+	{
+		ageList.add(number);
 	}
-
-	/**
-	 * @param answer
-	 *            ->answer of multiple Questions
-	 * @param count
-	 *            ->individual number
-	 */
-	void multipleAnsSet(String answer, int count) {
-		multiple[count] = answer;
+	/* this method stores rating given by a particular tourist */
+	void rating(int rating)
+	{
+		ratingList.add(rating);
 	}
-
-	/**
-	 * @param answer
-	 *            ->answer of individual
-	 * @param count
-	 *            ->individual number
-	 */
-	void textSet(String answer, int count) {
-		text[count] = answer;
+	
+	/* this method stores gender of a particular tourist */
+	void gender(String gender)
+	{
+		genderList.add(gender);
 	}
-
-	/**
-	 * @param count
-	 *            ->individual no
-	 * @return->answer of that individual
-	 */
-	int singleAnsGet(int count) {
-		return single[count];
+	
+	/* this method stores favorite heritages of a particular tourist */
+	void favoriteHeritages(String favoriteHeritage)
+	{
+		favoriteHeritagesList.add(favoriteHeritage);
 	}
-
-	/**
-	 * @param count
-	 *            ->individual no
-	 * @return->answer of that individual for multiple Question
-	 * 
-	 */
-	String multipleAnsGet(int count) {
-		return multiple[count];
+	
+	/* this method stores nationality of a particular tourist */
+	void nationality(String nationality)
+	{
+		nationalityList.add(nationality);
 	}
-
-	/**
-	 * @param count
-	 *            ->individual no
-	 * @return->answer of feedback
-	 */
-	String textAnsGet(int count) {
-		return text[count];
+	
+	/* this method stores feedback question */
+	void feedbackSet(String answer)
+	{
+		feedbackList.add(answer);
 	}
-
+	
+	/* This method returns age of a particular tourist */
+	int getAge(int count)
+	{
+		int result;
+		result = (int)ageList.get(count-1);
+		return result;
+	}
+	
+	/* This method returns Nationality of a particular tourist */
+	String getNationality(int count)
+	{
+		String result;
+		result = nationalityList.get(count-1);
+		return result;
+	}
+	
+	/* This method returns rating given by a particular tourist */
+	int getRating(int count)
+	{
+		int result;
+		result = (int)ratingList.get(count-1);
+		return result;
+	}
+	
+	/* This method returns gender of a particular tourist */
+	String getGender(int count)
+	{
+		String result;
+		result = genderList.get(count-1);
+		return result;
+	}
+	
+	/* This method returns favorite heritages of a particular tourist */
+	String getfavoriteHeritages(int count)
+	{
+		String result;
+		result = favoriteHeritagesList.get(count-1);
+		return result;
+	}
+	
+	/* this method returns feedback of a particular tourist */
+	String feedbackGet(int count)
+	{
+		String result;
+		result = feedbackList.get(count-1);
+		return result;
+	}
 }
