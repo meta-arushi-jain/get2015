@@ -1,11 +1,18 @@
 
 /**
- * @author Arushi It is an interface for displaying Questions
+ * 
+ */
+
+/**
+ * @author Arushi
+ *
  */
 public interface Question {
-	public String singleSelect();
-
-	public String multipleSelect();
-
-	public String text();
+	
+	public String age(boolean flag);
+	public String nationality(boolean flag);
+	public String gender(boolean flag);
+	public String ratingHaritages(boolean flag);
+	public String favouriteHaritages(boolean flag);
+	public String feedback(boolean flag);
 }
