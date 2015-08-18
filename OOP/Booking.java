@@ -19,6 +19,7 @@ public class Booking {
 		int temp = 0;
 		passengerList = new ArrayList<Passenger>();
 		goodsList = new ArrayList<GoodsTrain>();
+		Scanner sc = new Scanner(System.in);
 
 		try {
 			FileInputStream fr = new FileInputStream(// Reading from file
@@ -88,7 +89,7 @@ public class Booking {
 
 			do {// asking enteries from user
 				System.out.println("Enter your name");
-				Scanner sc = new Scanner(System.in);
+				
 				String userName = sc.next();
 				int temp1 = 0;
 				System.out.println("What type of train you want");
@@ -225,22 +226,22 @@ public class Booking {
 								System.out.println("1.CreditCard");
 								System.out.println("2.Wallet");
 								System.out.println("3.Netbanking");
-								int choose = sc.nextInt();
-								PaymentMode payment = new PaymentMode();
-								sc.close();
-								switch (choose) {
+								int choose1 = sc.nextInt();
+								PaymentMode payment1 = new PaymentMode();
+							
+								switch (choose1) {
 								case 1:
 
-									payment.creditCard(amount);
+									payment1.creditCard(amount);
 									break;
 
 								case 2:
 
-									payment.wallet(amount);
+									payment1.wallet(amount);
 									break;
 
 								case 3:
-									payment.netBanking(amount);
+									payment1.netBanking(amount);
 									break;
 
 								default:
@@ -294,6 +295,7 @@ public class Booking {
 				System.out.println("Else Press 1 if you want to exit");
 				temp = sc.nextInt();
 			} while (temp != 1);
+			sc.close();
 
 		} catch (IOException e) {
 
