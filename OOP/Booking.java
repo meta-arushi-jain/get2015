@@ -20,7 +20,7 @@ public class Booking {
 
 		try {
 			FileInputStream fr = new FileInputStream(
-					"E:/My-Desktop/workspace/TrainingEx/src/Train.txt");
+					"C:/Users/Arushi/workspace/OopAssignment3/src/Train.txt");
 			String source = "";
 			String destination = "";
 			String price = "";
@@ -29,7 +29,7 @@ public class Booking {
 			String trainNum = "";
 			int count = 0;
 			char c;
-			while (((InputStream) fr).available() > 0) {
+			while (((InputStream) fr).available() > 0) {//reading file
 				c = (char) fr.read();
 				if (c != ',') {
 					if (count == 0) {
@@ -173,8 +173,9 @@ public class Booking {
 
 					}
 
-				break;
+				
 				}
+				break;
 			case 2:
 				System.out.println("---CURRENT TRAVELLING CHART");
 				System.out
@@ -256,9 +257,10 @@ public class Booking {
 						}
 
 					}
-					break;
+					
 
 				}
+				break;
 			default:
 				System.out.println("Enter right values");
 				break;
