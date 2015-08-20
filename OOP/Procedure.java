@@ -109,13 +109,13 @@ public class Procedure {
 
 				}
 
-				if (temp == 0) {
-					System.out.println("No such trains.Try Another");
-					TrainMenu menu1 = new TrainMenu();
-					menu1.menu();
-				}
-
 			}
+			if (temp == 0) {
+				System.out.println("No such trains.Try Another");
+				TrainMenu menu1 = new TrainMenu();
+				menu1.menu();
+			}
+
 		}
 
 		else {// For goods train
@@ -137,11 +137,11 @@ public class Procedure {
 
 				}
 
-				if (temp == 0) {
-					System.out.println("No such trains.Try another");
-					TrainMenu menu1 = new TrainMenu();
-					menu1.menu();
-				}
+			}
+			if (temp == 0) {
+				System.out.println("No such trains.Try another");
+				TrainMenu menu1 = new TrainMenu();
+				menu1.menu();
 			}
 		}
 	}
