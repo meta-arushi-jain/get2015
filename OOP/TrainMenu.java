@@ -168,7 +168,7 @@ System.out.println("AMOUNT---" + amount);
 
 			
 		}System.out.println("Press 0 if you want to continue");
-		System.out.println("Else Press anythinng else if you want to exit");
+		System.out.println("Else Press anythinng integer value if you want to exit");
 		tempVar = sc.nextInt();
 	} while (tempVar== 0);
 		
