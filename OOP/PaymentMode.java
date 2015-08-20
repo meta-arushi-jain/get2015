@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 /**
@@ -15,10 +16,28 @@ public class PaymentMode {
 		System.out.println("Enter your cc value");
 		System.out.println("IT MUST BE INTEGER VALUE");
 
-		int ccValue = sc.nextInt();
+		int ccValue;
+		do {// Validation
+			
+			while (!sc.hasNextInt()) {
+				System.out
+						.println("That's not a number!Please enter again");
+				sc.next(); // this is important!
+			}
+			ccValue = sc.nextInt();
+		} while (ccValue <= 0);
 		System.out.println("Enter your csv value");
 		System.out.println("IT MUST BE INTEGER VALUE");
-		int csvValue = sc.nextInt();
+		int csvValue;
+		do {// Validation
+	
+			while (!sc.hasNextInt()) {
+				System.out
+						.println("That's not a number!Please enter again");
+				sc.next(); // this is important!
+			}
+			csvValue = sc.nextInt();
+		} while (csvValue <= 0);
 		System.out.println("Your processing as follows");
 
 		System.out.println("ccValue-" + ccValue + "	csv value->" + csvValue
