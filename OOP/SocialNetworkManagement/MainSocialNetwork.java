@@ -97,7 +97,7 @@ public class MainSocialNetwork {
 				}
 				break;
 			case 6:
-				System.out.println("enter your name: ");
+				
 				Entity entityVariable = new Entity();
 				boolean test;
 				do {
@@ -109,7 +109,7 @@ public class MainSocialNetwork {
 								.println("enter a valid email Id (example : abc@xyz.com)");
 				} while (test == false);
 				entityVariable.setEmail(email);
-				System.out.println("enter friend name: ");
+				System.out.println("enter friend email: ");
 				Entity entitySecondVariable = new Entity();
 				do {
 					System.out.println("email : ");
@@ -123,10 +123,10 @@ public class MainSocialNetwork {
 				SocialNetwork.connect(entityVariable, entitySecondVariable);
 				break;
 			case 7:
-				System.out.println("enter your name: ");
+				System.out.println("enter your email: ");
 				Entity entityFirst = new Entity();
 				entityFirst.setEmail(sc.next());
-				System.out.println("enter friend name: ");
+				System.out.println("enter friend email: ");
 				Entity entitySecond = new Entity();
 				entitySecond.setEmail(sc.next());
 				SocialNetwork.disconnect(entityFirst, entitySecond);
