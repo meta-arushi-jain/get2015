@@ -24,6 +24,10 @@ public class HashMap {
 	 */
 	public void statusOfRoom(int key) {
 		int hash = key;
+		if(hash>=No_Of_Rooms){
+			System.out.println("Room is not possible");
+			return;
+		}
 		while (room[hash] != null && room[hash].getKey() != key)
 			hash = (hash + 1) % No_Of_Rooms;
 		if (room[hash] == null) {
@@ -65,8 +69,13 @@ public class HashMap {
 	 *            ---Room to delete
 	 */
 	public void deleteRoom(int hashRoom) {
+		if(hashRoom>=No_Of_Rooms){
+			System.out.println("Room is not possible");
+			return;
+		}
 		room[hashRoom] = null;
 		count = count - 1;
+		System.out.println("Room is free now");
 
 	}
 
