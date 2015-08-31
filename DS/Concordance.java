@@ -55,5 +55,6 @@ public class Concordance {
 				System.out.println(value + store[i]);
 			}
 		}
+		sc.close();
 	}
 }
