@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * 
+ */
 
 /**
  * @author Arushi
@@ -65,7 +68,7 @@ public class RoomAllotmentMain {
 				room = sc.nextInt();
 			} while (room < 0);
 			hm.deleteRoom( room);
-			System.out.println("Room is free now");
+			
 			break;
 		case 3://room status
 			System.out.println("Enter room  to check its details");
