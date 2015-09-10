@@ -2,45 +2,64 @@ USE LIBRARY_DATABASE;
 /*Inserting into members--------Assignment-3*/
 INSERT INTO Members (member_name,addressLine1,addressLine2,category )
 VALUES( "AJ","16","jaipur",'f');
+
 INSERT INTO Members (member_name,addressLine1,addressLine2,category )
 VALUES( "arushi","2","jaipur",'f');
+
 INSERT INTO Members (member_name,addressLine1,addressLine2,category )
 VALUES( "sumitra","18","chittor",'f');
+
 INSERT INTO Members (member_name,addressLine1,addressLine2,category )
 VALUES( "deepali","37","neemuch",'f');
+
 INSERT INTO Members (member_name,addressLine1,addressLine2,category )
 VALUES( "priya","75","kota",'f');
+
 /*Inserting into subjects*/
 INSERT INTO Subjects (subject_name)
 VALUES("Novel");
+
 INSERT INTO Subjects (subject_name)
 VALUES("IT");
+
 INSERT INTO Subjects (subject_name)
 VALUES("Business");
+
 INSERT INTO Subjects (subject_name)
 VALUES("Campus");
+
 INSERT INTO Subjects (subject_name)
 VALUES("Technology");
+
 /*Inserting into publishers*/
 INSERT INTO Publishers (publisher_name)
 VALUES("Tata_mc_Hill");
+
 INSERT INTO Publishers (publisher_name)
 VALUES("Pearson");
+
 INSERT INTO Publishers (publisher_name)
 VALUES("Scootney Books");
+
 INSERT INTO Publishers (publisher_name)
 VALUES("Arihant");
+
 INSERT INTO Publishers (publisher_name)
 VALUES("Amazing");
+
 /*Inserting into authors*/
 INSERT INTO Authors (author_name)
 VALUES("White Johnson");
+
 INSERT INTO Authors (author_name)
 VALUES("Dull Ann");
+
 INSERT INTO Authors (author_name)
 VALUES("Groon Marjorie");
+
 INSERT INTO Authors (author_name)
 VALUES("Branath Abraham");
+
 INSERT INTO Authors (author_name)
 VALUES("Smith Meander");
 
