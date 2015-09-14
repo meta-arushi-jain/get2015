@@ -45,7 +45,17 @@ from
         inner join
     titles t ON b.title_id = t.title_id
         inner join
-    members m  ON bi.member_id = m.member_id where bi.accession_no = (SELECT bi1.accession_no from book_issue bi1  where bi1.accession_no= bi.accession_no AND bi1.accession_no NOT IN ( SELECT br.accession_no from book_return br) );
+    members m ON bi.member_id = m.member_id
+where
+    bi.accession_no = (SELECT 
+        bi1.accession_no
+    from
+        book_issue bi1
+    where
+        bi1.accession_no = bi.accession_no AND bi1.accession_no NOT IN (SELECT 
+            br.accession_no
+        from
+            book_return br));
     
 
 /*  3. Write a SELECT command to display information on the books
@@ -59,24 +69,22 @@ Note: Use Correlated Subquery.
     
 
 SELECT 
-   bi.Issue_date, t.Title_name, m.Member_name, bi.Due_date
+    bi.Issue_date, t.Title_name, m.Member_name, bi.Due_date
 FROM
-   book_Issue bi
-       INNER JOIN
-   books b ON b.Accession_no = bi.Accession_no
-       INNER JOIN
-   titles t ON t.Title_id = b.title_id
-       INNER JOIN
-   Members m ON m.Member_id = bi.Member_id
+    book_Issue bi
+        INNER JOIN
+    books b ON b.Accession_no = bi.Accession_no
+        INNER JOIN
+    titles t ON t.Title_id = b.title_id
+        INNER JOIN
+    Members m ON m.Member_id = bi.Member_id
 WHERE
-   EXISTS( SELECT 
-       br.member_id, br.issue_date, br.accession_no
-   FROM
-       book_return br
-   WHERE
-       br.issue_date = DATE(bi.issue_date) AND br.member_id = bi.member_id 
-       AND br.accession_no = bi.accession_no 
-       AND br.Return_date > bi.Due_Date);
+    EXISTS( SELECT 
+        br.member_id, br.issue_date, br.accession_no
+    FROM
+        book_return br
+    WHERE
+        br.issue_date = DATE(bi.issue_date) AND br.member_id = bi.member_id AND br.accession_no = bi.accession_no AND br.Return_date > bi.Due_Date);
 
  /*4-Write a SELECT command to display information of those books
 whose price is equal to the most expensive book purchase so far.
@@ -95,7 +103,7 @@ WHERE
  /* 5-Write a SELECT command to display the second maximum price
 of a book.*/       
     
-    SELECT 
+SELECT 
     max(price)
 FROM
     books
@@ -114,7 +122,10 @@ CREATE VIEW ISSUE_DETAILS AS
 SELECT m.member_name,bi.issue_date,bi.accession_no,m.member_id,bi.due_date
 FROM members m INNER JOIN book_issue bi ON bi.member_id=m.member_id;
 
- SELECT * FROM ISSUE_DETAILS;
+SELECT 
+    *
+FROM
+    ISSUE_DETAILS;
  
  
  /*2--- Create a View which contains three columns, member name,
@@ -125,7 +136,10 @@ CREATE VIEW fullDescriptionOfCategory AS
 SELECT Member_id,Member_name,IF(person_type='F','Faculty',
 IF(person_type='S','Student',IF(person_type='O','Others',NULL))) AS Category FROM Members;
 
-SELECT * FROM fullDescriptionOfCategory;
+SELECT 
+    *
+FROM
+    fullDescriptionOfCategory;
 
 
 /*  3--    Create a View which contains the information – subject name,
@@ -142,7 +156,10 @@ INNER JOIN Books b ON b.Accession_no=bi.Accession_no
 INNER JOIN Titles t ON b.Title_id=t.Title_id 
 INNER JOIN Subjects s ON s.Subject_id=t.Subject_id ;
 
- SELECT * FROM returnDetailsOfBooks;
+SELECT 
+    *
+FROM
+    returnDetailsOfBooks;
 
         
         
