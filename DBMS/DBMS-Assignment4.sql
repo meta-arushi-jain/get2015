@@ -37,25 +37,22 @@ VALUES((SELECT accession_no FROM books where title_id=ALL(SELECT title_id FROM t
 
 
 SELECT 
-    bi.issue_date, bi.due_date, m.member_name, t.title_name
-from
-    book_issue bi
-        inner join
-    books b ON bi.accession_no = b.accession_no
-        inner join
-    titles t ON b.title_id = t.title_id
-        inner join
-    members m ON bi.member_id = m.member_id
-where
-    bi.accession_no = (SELECT 
-        bi1.accession_no
-    from
-        book_issue bi1
-    where
-        bi1.accession_no = bi.accession_no AND bi1.accession_no NOT IN (SELECT 
-            br.accession_no
-        from
-            book_return br));
+   bi.Issue_date, t.Title_name, m.Member_name, bi.Due_date
+FROM
+   Book_Issue bi
+       INNER JOIN
+   Books b ON b.Accession_no = bi.Accession_no
+       INNER JOIN
+   Titles t ON t.Title_id = b.Title_id
+       INNER JOIN
+   Members m ON m.Member_id = bi.Member_id
+WHERE
+   NOT EXISTS(SELECT 
+       br.member_id, br.issue_date, br.accession_no
+   FROM
+       book_return br
+   WHERE
+       br.issue_date = DATE(bi.issue_date) AND br.member_id = bi.member_id AND br.accession_no = bi.accession_no) ;
     
 
 /*  3. Write a SELECT command to display information on the books
