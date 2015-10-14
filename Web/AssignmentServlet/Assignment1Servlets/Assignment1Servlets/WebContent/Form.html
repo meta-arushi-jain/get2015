@@ -50,7 +50,8 @@
 				</br></br>
 				<input type="text" name="age" id="age"  placeholder="enter age"/>
 				</br></br>
-				 <select id="stateCombo" onchange='stateComboChange();'>
+				  <select id="stateCombo" name="stateCombo" onchange='stateComboChange();'>
+				 <option value='' title=''>Select State</option>
 				<option value='0' title='Rajasthan'>Rajasthan</option>
 				<option value='1' title='MP'>MP</option>
 				<option value='2' title='UP'>UP</option>
@@ -58,8 +59,8 @@
 				</select>
 				
 				</br><br>
-				<select id="cityCombo" onchange='cityComboChange();'>
-				<option value='0' title='Jaipur'>Jaipur</option>
+				<select id="cityCombo" name="cityCombo" onchange='cityComboChange();'>
+				<option value='' title=''>Select State first</option>
 				</select>
 				
 				</br></br>
