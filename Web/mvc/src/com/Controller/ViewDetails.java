@@ -16,44 +16,53 @@ import com.helper.EmployeeListMain;
 import com.modal.Employee;
 
 /**
- * Servlet implementation class ViewDetails
+ * @author Arushi ---Servlet implementation of class ViewDetails
+ *
  */
 public class ViewDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public ViewDetails() {
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Default constructor.
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int id = Integer.parseInt(request.getParameter("id"));
-		
-		ConcurrentHashMap<Integer, Employee> employeeMapNew = EmployeeListMain.getAllEmployees();
-		List<Employee> employeeList = new ArrayList<Employee>();
-		
-		for (Integer i : employeeMapNew.keySet()) {
-			employeeList.add(employeeMapNew.get(i));
-		}
-		
-		request.setAttribute("employeeDetails", employeeList.get(id));
-		
-		getServletContext().getRequestDispatcher("/view/ViewDetails.jsp").forward(request, response);
-		
-		
+
+	public ViewDetails() {
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 * 
+	 *      --- Detailed view of a particular employee
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		int id = Integer.parseInt(request.getParameter("id"));
+
+		ConcurrentHashMap<Integer, Employee> employeeMapNew = EmployeeListMain
+				.getAllEmployees();
+		List<Employee> employeeList = new ArrayList<Employee>();
+
+		for (Integer i : employeeMapNew.keySet()) {
+			employeeList.add(employeeMapNew.get(i));
+		}
+
+		request.setAttribute("employeeDetails", employeeList.get(id));
+
+		getServletContext().getRequestDispatcher("/view/ViewDetails.jsp")
+				.forward(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 	}
 
 }
