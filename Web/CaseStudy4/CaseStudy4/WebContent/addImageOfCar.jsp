@@ -5,6 +5,7 @@
 <%
 	HttpSession session = request.getSession();
 	session.setAttribute("make", request.getParameter("make"));
+	session.setAttribute("model", request.getParameter("model"));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -62,6 +63,9 @@
 
 			<form class="formclass" enctype="multipart/form-data" action="addcar" method="post">
 			<input type="text" name="make" value="<%=request.getParameter("make")%>">
+			<br/><br/>
+				<input type="text" name="model" value="<%=request.getParameter("model")%>">
+				<br/><br/>
 				<span class="space">
 					Image Path:<input type="file" name="image_path" autofocus required />			</span>
 				<div class="submit-design">
