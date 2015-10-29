@@ -109,15 +109,13 @@ public class AddCar extends HttpServlet {
 							connection);
 			if (insert == 1) {
 				request.setAttribute("make", request.getParameter("make"));
+				request.setAttribute("model", request.getParameter("model"));
 				RequestDispatcher rd = request
 						.getRequestDispatcher("/addImageOfCar.jsp");
 				rd.forward(request, response);
 			} else {
-				request.setAttribute("message", "Car not inserted");
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/addCar.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("addCar.jsp?message="
+						+ URLEncoder.encode("Car not inserted", "UTF-8"));
 			}
 		}
 	}
@@ -132,7 +130,7 @@ public class AddCar extends HttpServlet {
 		String image_path = uploadFile(request, response);
 		HttpSession session = request.getSession(true);
 		String make = (String) session.getAttribute("make");
-
+		String model = (String) session.getAttribute("model");
 		Connection connection = null;
 		try {
 			connection = ConnectionFactory.getConnection();
@@ -147,7 +145,7 @@ public class AddCar extends HttpServlet {
 		}
 
 		int insert = CarPortalDao.updateImagePathOfCar(connection, image_path,
-				make);
+				make,model);
 		if (insert == 1) {
 			request.setAttribute("username", session.getAttribute("username"));
 			RequestDispatcher rd = request.getRequestDispatcher("/admin");
