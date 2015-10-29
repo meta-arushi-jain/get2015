@@ -43,7 +43,7 @@ public class CarPortalDao {
 		SELECT_LIST_OF_MAKE = "SELECT make FROM Car";
 		SELECT_LIST_OF_MODEL = "SELECT model FROM Car WHERE make=?";
 		SELECT_LIST_OF_CAR_BY_MAKE = "SELECT * FROM Car WHERE make=?";
-		UPDATE_IMAGE_PATH_OF_CAR_QUERY = "UPDATE Car SET image_path=? WHERE make=?";
+		UPDATE_IMAGE_PATH_OF_CAR_QUERY = "UPDATE Car SET image_path=? WHERE make=? AND model=?";
 
 	}
 
@@ -360,7 +360,7 @@ public class CarPortalDao {
 	 * @return--whether car is updated or not
 	 */
 	public static int updateImagePathOfCar(Connection connection,
-			String image_path, String make) {
+			String image_path, String make,String model) {
 
 		PreparedStatement preparedStatement = null;
 
@@ -371,6 +371,7 @@ public class CarPortalDao {
 
 			preparedStatement.setString(1, image_path);
 			preparedStatement.setString(2, make);
+			preparedStatement.setString(3, model);
 			return preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
