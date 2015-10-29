@@ -120,11 +120,9 @@ public class EditCar extends HttpServlet {
 			int update = CarPortalDao.updateCarDetails(connection, car.get(0));
 
 			if (update == -1) {
-				request.setAttribute("message", "Car not inserted");
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/EditCar.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("EditCar.jsp?message="
+						+ URLEncoder.encode("Car not inserted", "UTF-8"));
+				
 			} else {
 				request.setAttribute("username",
 						session.getAttribute("username"));
