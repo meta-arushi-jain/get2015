@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 
 /**
  * @author Arushi 
- * class for providing restfull service
+ * --class for providing restfull service
  *
  */
 @Path("/employeeService")
@@ -42,7 +42,7 @@ public class EmployeeService {
 			@PathParam("department") String department) throws SQLException {
 
 		Connection getConnection = ConnectionFactory.getConnection();
-
+		EmployeeDao employeeDao = new EmployeeDao(getConnection);
 		EmployeeDao.useEmployeeDatabase(getConnection);
 		Employee employee = new Employee(id, name, department, salary);
 		int result = EmployeeDao.insertIntoEmployeeTable(employee,
