@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Credit_Card_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit_Card_Number</label>
+        <length>18</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DateField__c</fullName>
+        <description>Validates that the value of a custom date field is a weekday (not Saturday or Sunday).</description>
+        <externalId>false</externalId>
+        <label>Date Field</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Mix_Pct__c</fullName>
+        <externalId>false</externalId>
+        <label>Mix Pct</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Multiple_of_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Multiple of 5</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>ValidationObject</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>ValidationObject Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>ValidationObjects</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Day_must_be_week_day</fullName>
+        <active>true</active>
+        <description>Validates that the value of a custom date field is a weekday (not Saturday or Sunday).</description>
+        <errorConditionFormula>CASE(MOD( DateField__c  - DATE(1900, 1, 7), 7),
+0, 0,
+6, 0,
+1) = 0</errorConditionFormula>
+        <errorMessage>custom date field must be a weekday (not Saturday or Sunday).</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FormatOfCreditCard</fullName>
+        <active>true</active>
+        <description>Validates that a custom text field called Credit_Card_Number is formatted in 9999-9999-9999-9999 or 9999999999999999 number format when it is not blank.</description>
+        <errorConditionFormula>NOT( REGEX( Credit_Card_Number__c , &quot;(((\\d{4}-){3}\\d{4})|\\d{16})?&quot;))</errorConditionFormula>
+        <errorMessage>Credit_Card_Number is not in format</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Mix_Pct_less_than_100</fullName>
+        <active>true</active>
+        <description>Validates that a custom field called Mix Pct is between 0 and 100%.</description>
+        <errorConditionFormula>OR(
+   Mix_Pct__c &gt; 1.0,
+   Mix_Pct__c &lt; 0.0
+)</errorConditionFormula>
+        <errorMessage>Mix Pct must be in between 0 and 100%.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Multiple_of_5_number</fullName>
+        <active>true</active>
+        <description>Validates that a custom field called Multiple of 5 is a multiple of five.</description>
+        <errorConditionFormula>MOD( Multiple_of_5__c, 5) &lt;&gt; 0</errorConditionFormula>
+        <errorMessage>custom field called Multiple of 5 is not a multiple of five</errorMessage>
+    </validationRules>
+</CustomObject>
