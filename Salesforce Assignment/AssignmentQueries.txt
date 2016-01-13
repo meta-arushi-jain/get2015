@@ -1,0 +1,56 @@
+1)Write SOQL Select all strudent Name,Dob,Sex where LastName starts with “S”
+
+Ans: 
+ Select s.Sex__c, s.Name, s.DOB__c From Student__c s where s.LastName__c  LIKE 'S%'
+
+2)Select All students where ClassName starts with “X”
+
+Ans
+ Select s.email__c, s.SystemModstamp, s.Spouse_Name__c, s.Sex__c, s.Name, s.Married__c, s.LastViewedDate, s.LastReferencedDate, s.LastName__c, s.LastModifiedDate, s.LastModifiedById, s.IsDeleted, s.Id, s.First_Name__c, s.DOB__c, s.CreatedDate, s.CreatedById, s.Class__c, s.Age__c From Student__c s where  s.Class__r.Name LIKE 'X%'
+
+3)Select all Student and ClassName
+
+Ans
+    Select s.email__c, s.SystemModstamp, s.Spouse_Name__c, s.Sex__c, s.Name, s.Married__c, s.LastViewedDate, s.LastReferencedDate, s.LastName__c, s.LastModifiedDate, s.LastModifiedById, s.IsDeleted, s.Id, s.First_Name__c, s.DOB__c, s.CreatedDate, s.CreatedById, s.Class__r.Name, s.Age__c From Student__c s 
+
+
+4)Select all Classes with students in every class as sub query.
+
+Ans
+  Select c.SystemModstamp, c.OwnerId, c.NumberOfStudents__c, c.Name__c, c.Name, c.MyCount__c, c.MaxSize__c, c.LastViewedDate, c.LastReferencedDate, c.LastModifiedDate, c.LastModifiedById, c.IsDeleted, c.Id, c.Fee__c, c.DetailedDescription__c, c.CreatedDate, c.CreatedById, c.ClassTeacher__c, c.Board__c, (Select Id, IsDeleted, Name, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, SystemModstamp, LastViewedDate, LastReferencedDate, First_Name__c, LastName__c, DOB__c, Age__c, Sex__c, email__c, Married__c, Spouse_Name__c, Class__c From Students__r) From Class__c c
+
+
+5)Select all students where class teacher name starts with “S”
+
+Ans
+     Select s.email__c, s.SystemModstamp, s.Spouse_Name__c, s.Sex__c, s.Name, s.Married__c, s.LastViewedDate, s.LastReferencedDate, s.LastName__c, s.LastModifiedDate, s.LastModifiedById, s.IsDeleted, s.Id, s.First_Name__c, s.DOB__c, s.CreatedDate, s.CreatedById, s.Class__c, s.Age__c From Student__c s where s.Class__r.ClassTeacher__r.Name LIKE 'S%'
+
+6) All students where DOB > Year 2000
+
+Ans
+    Select s.email__c, s.SystemModstamp, s.Spouse_Name__c, s.Sex__c, s.Name, s.Married__c, s.LastViewedDate, s.LastReferencedDate, s.LastName__c, s.LastModifiedDate, s.LastModifiedById, s.IsDeleted, s.Id, s.First_Name__c, s.DOB__c, s.CreatedDate, s.CreatedById, s.Class__c, s.Age__c From Student__c s where CALENDAR_YEAR(s.DOB__c)>2000
+
+
+7)All Leads Where ModifiedDate in current month
+Ans
+    
+Select l.Phone, l.OwnerId, l.NumberofLocations__c, l.NumberOfEmployees, l.Name, l.MobilePhone, l.Id, l.FirstName, l.Company, l.City, l.AnnualRevenue, l.Address From Lead l where l.LastModifiedDate =THIS_MONTH
+
+
+8) All Classes with Students as sub query where student Name Starts with “S”
+
+
+Ans
+	Select c.SystemModstamp, c.OwnerId, c.NumberOfStudents__c, c.Name__c, c.Name, c.MyCount__c, c.MaxSize__c, c.LastViewedDate, c.LastReferencedDate, c.LastModifiedDate, c.LastModifiedById, c.IsDeleted, c.Id, c.Fee__c, c.DetailedDescription__c, c.CreatedDate, c.CreatedById, c.ClassTeacher__c, c.Board__c, (Select Id, IsDeleted, Name, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, SystemModstamp, LastViewedDate, LastReferencedDate, First_Name__c, LastName__c, DOB__c, Age__c, Sex__c, email__c, Married__c, Spouse_Name__c, Class__c From Students__r where First_Name__c LIKE 'S%') From Class__c c
+
+9) All Teachers who have Hindi and English both subjects
+
+
+Ans
+     Select c.phone_no__c, c.Title, c.SystemModstamp, c.Subjects__c, c.Salutation, c.ReportsToId, c.PhotoUrl, c.Phone, c.OwnerId, c.OtherStreet, c.OtherState, c.OtherPostalCode, c.OtherPhone, c.OtherLongitude, c.OtherLatitude, c.OtherGeocodeAccuracy, c.OtherCountry, c.OtherCity, c.OtherAddress, c.Name, c.MobilePhone, c.MasterRecordId, c.MailingStreet, c.MailingState, c.MailingPostalCode__c, c.MailingPostalCode, c.MailingLongitude, c.MailingLatitude, c.MailingGeocodeAccuracy, c.MailingCountry, c.MailingCity, c.MailingAddress, c.Level__c, c.LeadSource, c.LastViewedDate, c.LastReferencedDate, c.LastName, c.LastModifiedDate, c.LastModifiedById, c.LastCUUpdateDate, c.LastCURequestDate, c.LastActivityDate, c.Languages__c, c.JigsawContactId, c.Jigsaw, c.IsEmailBounced, c.IsDeleted, c.Id, c.HomePhone, c.FirstName, c.Fax, c.Experience__c, c.EmailBouncedReason, c.EmailBouncedDate, c.Email, c.Description, c.Department, c.CreatedDate, c.CreatedById, c.CleanStatus, c.Birthdate, c.AssistantPhone, c.AssistantName, c.Account_Number__c, c.AccountId From Contact c where Subjects__c includes('Hindi;English')
+
+10) All students who have hindi or maths
+
+Ans
+    Select s.email__c, s.SystemModstamp, s.Spouse_Name__c, s.Sex__c, s.Name, s.Married__c, s.LastViewedDate, s.LastReferencedDate, s.LastName__c, s.LastModifiedDate, s.LastModifiedById, s.IsDeleted, s.Id, s.First_Name__c, s.DOB__c, s.CreatedDate, s.CreatedById, s.Class__c, s.Age__c From Student__c s where Class__r.ClassTeacher__r.Subjects__c INCLUDES ('English;Hindi')
+      
