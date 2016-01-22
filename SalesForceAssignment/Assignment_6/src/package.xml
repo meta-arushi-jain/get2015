@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Trigger1</members>
+        <members>Trigger2</members>
+        <members>Trigger3</members>
+        <members>Trigger4</members>
+        <members>Trigger5</members>
+        <members>Trigger6</members>
+        <name>ApexTrigger</name>
+    </types>
+    <version>35.0</version>
+</Package>
