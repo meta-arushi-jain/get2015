@@ -3,7 +3,7 @@
     <apiVersion>35.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>ComponentPage</label>
+    <label>PurchaseProduct</label>
     <packageVersions>
         <majorNumber>1</majorNumber>
         <minorNumber>10</minorNumber>
