@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>JSONTest</members>
+        <members>StackTest</members>
+        <members>StringArrayTest</members>
+        <members>StudentListTest</members>
+        <members>TemperatureConverterTest</members>
+        <members>TestContactsForAccount</members>
+        <members>TestRestrictContactByName</members>
+        <members>Trigger1Test</members>
+        <members>Trigger2Test</members>
+        <members>TriggerTest3</members>
+        <members>TriggerTest5</members>
+        <members>TriggerTest6</members>
+        <name>ApexClass</name>
+    </types>
+    <version>35.0</version>
+</Package>
